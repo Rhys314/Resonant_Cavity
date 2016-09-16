@@ -43,5 +43,9 @@ for ii, x in enumerate(x_array):
             Et, Ht, Hz = te(x, y, z)
             E[ii, jj, kk] = np.array([Et[0], Et[1], 0])
             H[ii, jj, kk] = np.array([Ht[0], Ht[1], Hz])
+            test = np.dot(E[ii, jj, kk], H[ii, jj, kk])
+            if test != 0:
+                print("E and H not orthognal.")
+                print("E.H = {}".format(test))
 
 modes.plot(x_array, y_array, z_array, E, H)
